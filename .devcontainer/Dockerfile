@@ -1,5 +1,5 @@
 # Ubuntuの公式コンテナを軸に環境構築
-FROM ubuntu
+FROM ubuntu:20.04
 
 # インタラクティブモードにならないようにする
 ARG DEBIAN_FRONTEND=noninteractive
@@ -27,15 +27,17 @@ RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 30 && \
     update-alternatives --install /usr/bin/node node /usr/bin/nodejs 30
 
 # AtCoderでも使えるPythonライブラリをインストール
-RUN pip install numpy==1.18.2 && \
-    pip install scipy==1.4.1 && \
-    pip install scikit-learn==0.22.2.post1 && \
-    pip install numba==0.48.0 && \
-    pip install networkx==2.4
+# RUN pip install numpy==1.18.2 && \
+#     pip install scipy==1.4.1 x&& \
+#     pip install scikit-learn==0.22.2.post1 && \
+#     pip install numba==0.48.0 && \
+#     pip install networkx==2.4
 
 # C++でAtCoder Library(ACL)を使えるようにする
 RUN git clone https://github.com/atcoder/ac-library.git /lib/ac-library
 ENV CPLUS_INCLUDE_PATH /lib/ac-library
+
+RUN git clone https://github.com/moyac1012/compepetive-programing.git /root/compepetive-programing
 
 # Pythonでの競技プログラミング用データ構造をインストール
 RUN pip install git+https://github.com/hinamimi/ac-library-python && \

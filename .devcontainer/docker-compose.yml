@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
 
     # イメージ名を指定
-    image: hinamimi/atcoder:dev
+    image: moyac/atcoder:dev
 
     # localとcontainer間のファイルを同期させる
     # ${local}:${container}
@@ -14,13 +14,11 @@ services:
       - ../problems:/root/problems:cached
       - ../library:/root/library:cached
       - ../acc-template-python:/root/.config/atcoder-cli-nodejs/python:cached
+      - ../acc-template-cpp:/root/.config/atcoder-cli-nodejs/cpp:cached
       - ../.vscode:/root/.vscode:cached
 
     # オプション これらのconfigファイルが必要なければコメントアウト
-      - ../dotfiles/.zshrc:/root/.zshrc
-      - ../dotfiles/.zinit:/root/.zinit
-      - ../dotfiles/.zsh_history:/root/.zsh_history
-      - ../dotfiles/.aliases:/root/.aliases
+      - ~/.zshrc:/root/.zshrc
 
     # Overrides default command so things don't shut down after the process ends.
     command: /bin/sh -c "while sleep 1000; do :; done"
