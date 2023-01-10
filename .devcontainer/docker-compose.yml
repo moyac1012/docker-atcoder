@@ -18,7 +18,7 @@ services:
       - ../.vscode:/root/.vscode:cached
 
     # オプション これらのconfigファイルが必要なければコメントアウト
-      - ../dotfiles/.zshrc:/root/.zshrc
+      - ../dotfile/.zshrc:/root/.zshrc
 
     # Overrides default command so things don't shut down after the process ends.
     command: /bin/sh -c "while sleep 1000; do :; done"

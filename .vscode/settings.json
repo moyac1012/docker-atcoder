@@ -1,7 +1,8 @@
 {
     "files.associations": {
         ".aliases": "shellscript",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "ostream": "cpp"
     },
     "nuxt.isNuxtApp": false
 }
